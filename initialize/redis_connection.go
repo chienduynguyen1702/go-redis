@@ -1,4 +1,4 @@
-package redisclient
+package initialize
 
 import (
 	"context"
@@ -10,12 +10,6 @@ import (
 	"github.com/redis/go-redis/v9"
 )
 
-// RedisClient is a struct that holds a redis client
-type RedisClient struct {
-	Client *redis.Client
-}
-
-// NewRedisClient creates a new redis client
 func NewRedisClient(ctx context.Context) *redis.Client {
 	redisAddr := fmt.Sprintf("%s:%s", os.Getenv("REDIS_HOST"), os.Getenv("REDIS_PORT"))
 	redisPassword := os.Getenv("REDIS_PASSWORD")
@@ -38,5 +32,4 @@ func NewRedisClient(ctx context.Context) *redis.Client {
 
 	log.Println("Connected to redis")
 	return rdb
-
 }
